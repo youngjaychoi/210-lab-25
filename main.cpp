@@ -23,7 +23,7 @@ int main() {
     list<string> list;
     set<string> set;
 
-    long long vectorTime, listTime, setTime;
+    long long vectorTime = 0, listTime = 0, setTime = 0;
 
     auto start = high_resolution_clock::now();
     readData(vector);
@@ -41,7 +41,7 @@ int main() {
     setTime = duration_cast<milliseconds>(end - start).count();
 
     cout << right << setw(9) << "Operation" << setw(10) << "Vector" << setw(10) << "List" << setw(10) << "Set" << endl;
-    cout << right << setw(9) << "Read" << vectorTime << setw(10) << listTime << setw(10) << setTime << endl;
+    cout << right << setw(9) << "Read" << setw(10) << vectorTime << setw(10) << listTime << setw(10) << setTime << endl;
 
     start = high_resolution_clock::now();
     sort(vector.begin(), vector.end());
@@ -72,7 +72,22 @@ int main() {
 
     cout << right << setw(9) << "Insert" << setw(10) << vectorTime << setw(10) << listTime << setw(10) << setTime << setw(10) << endl;
 
-    
+    start = high_resolution_clock::now();
+    deleteMid(vector);
+    end = high_resolution_clock::now();
+    vectorTime = duration_cast<milliseconds>(end - start).count();
+
+    start = high_resolution_clock::now();
+    deleteMid(list);
+    end = high_resolution_clock::now();
+    listTime = duration_cast<milliseconds>(end - start).count();
+
+    start = high_resolution_clock::now();
+    deleteMid(set);
+    end = high_resolution_clock::now();
+    setTime = duration_cast<milliseconds>(end - start).count();
+
+    cout << right << setw(9) << "Delete" << setw(10) << vectorTime << setw(10) << listTime << setw(10) << setTime << endl;
 
     return 0;
 }
@@ -84,7 +99,7 @@ void readData(Container &container) {
     while (getline(inFile, line)) {
         container.insert(container.end(), line);
     }
-    file.close();
+    inFile.close();
 }
 
 template <typename Container>
