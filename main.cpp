@@ -22,13 +22,24 @@ int main() {
     list<string> list;
     set<string> set;
 
-    
+    long long vectorTime, listTime, setTime;
 
-    auto start = high_resolution_clock::now()
-    auto end = high_resolution_clock::now()
-    auto duration = duration_cast<milliseconds>(end - start)
-    duration.count() references elapsed milliseconds
+    auto start = high_resolution_clock::now();
+    readData(vector);
+    auto end = high_resolution_clock::now();
+    vectorTime = duration_cast<milliseconds>(end - start).count();
 
+    start = high_resolution_clock::now();
+    readData(list);
+    end = high_resolution_clock::now();
+    listTime = duration_cast<milliseconds>(end - start).count();
+
+    start = high_resolution_clock::now();
+    readData(set);
+    end = high_resolution_clock::now();
+    setTime = duration_cast<milliseconds>(end - start).count();
+
+    cout << "Operation"
 
 
     return 0;
@@ -59,5 +70,11 @@ template <typename Container>
 void deleteMid(Container &container) {
     auto it = container.begin();
     advance(it, container.size() / 2);
-    container
-}    
+    container.erase(it);
+}
+
+void deleteMid(set<string> &s) {
+    auto it = s.begin();
+    advance(it, s.size() / 2);
+    s.erase(it);
+}
