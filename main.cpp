@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <iomanip>
 #include <chrono>
 #include <vector>
 #include <list>
@@ -39,8 +40,39 @@ int main() {
     end = high_resolution_clock::now();
     setTime = duration_cast<milliseconds>(end - start).count();
 
-    cout << "Operation"
+    cout << right << setw(9) << "Operation" << setw(10) << "Vector" << setw(10) << "List" << setw(10) << "Set" << endl;
+    cout << right << setw(9) << "Read" << vectorTime << setw(10) << listTime << setw(10) << setTime << endl;
 
+    start = high_resolution_clock::now();
+    sort(vector.begin(), vector.end());
+    end = high_resolution_clock::now();
+    vectorTime = duration_cast<milliseconds>(end - start).count();
+
+    start = high_resolution_clock::now();
+    list.sort();
+    end = high_resolution_clock::now();
+    listTime = duration_cast<milliseconds>(end - start).count();
+
+    cout << right << setw(9) << "Sort" << setw(10) << vectorTime << setw(10) << listTime << setw(10) << setTime << endl;
+
+    start = high_resolution_clock::now();
+    insertMid(vector, "TESTCODE");
+    end = high_resolution_clock::now();
+    vectorTime = duration_cast<milliseconds>(end - start).count();
+
+    start = high_resolution_clock::now();
+    insertMid(list, "TESTCODE");
+    end = high_resolution_clock::now();
+    listTime = duration_cast<milliseconds>(end - start).count();
+
+    start = high_resolution_clock::now();
+    insertMid(set, "TESTCODE");
+    end = high_resolution_clock::now();
+    setTime = duration_cast<milliseconds>(end - start).count();
+
+    cout << right << setw(9) << "Insert" << setw(10) << vectorTime << setw(10) << listTime << setw(10) << setTime << setw(10) << endl;
+
+    
 
     return 0;
 }
