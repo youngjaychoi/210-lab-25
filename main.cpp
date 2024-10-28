@@ -25,67 +25,71 @@ int main() {
 
     long long vectorTime = 0, listTime = 0, setTime = 0;
 
+    // READING
     auto start = high_resolution_clock::now();
     readData(vector);
     auto end = high_resolution_clock::now();
-    vectorTime = duration_cast<milliseconds>(end - start).count();
+    vectorTime = duration_cast<microseconds>(end - start).count();
 
     start = high_resolution_clock::now();
     readData(list);
     end = high_resolution_clock::now();
-    listTime = duration_cast<milliseconds>(end - start).count();
+    listTime = duration_cast<microseconds>(end - start).count();
 
     start = high_resolution_clock::now();
     readData(set);
     end = high_resolution_clock::now();
-    setTime = duration_cast<milliseconds>(end - start).count();
+    setTime = duration_cast<microseconds>(end - start).count();
 
     cout << right << setw(9) << "Operation" << setw(10) << "Vector" << setw(10) << "List" << setw(10) << "Set" << endl;
     cout << right << setw(9) << "Read" << setw(10) << vectorTime << setw(10) << listTime << setw(10) << setTime << endl;
 
+    // SORTING
     start = high_resolution_clock::now();
     sort(vector.begin(), vector.end());
     end = high_resolution_clock::now();
-    vectorTime = duration_cast<milliseconds>(end - start).count();
+    vectorTime = duration_cast<microseconds>(end - start).count();
 
     start = high_resolution_clock::now();
     list.sort();
     end = high_resolution_clock::now();
-    listTime = duration_cast<milliseconds>(end - start).count();
+    listTime = duration_cast<microseconds>(end - start).count();
 
     cout << right << setw(9) << "Sort" << setw(10) << vectorTime << setw(10) << listTime << setw(10) << setTime << endl;
 
+    // INSERTING
     start = high_resolution_clock::now();
     insertMid(vector, "TESTCODE");
     end = high_resolution_clock::now();
-    vectorTime = duration_cast<milliseconds>(end - start).count();
+    vectorTime = duration_cast<microseconds>(end - start).count();
 
     start = high_resolution_clock::now();
     insertMid(list, "TESTCODE");
     end = high_resolution_clock::now();
-    listTime = duration_cast<milliseconds>(end - start).count();
+    listTime = duration_cast<microseconds>(end - start).count();
 
     start = high_resolution_clock::now();
     insertMid(set, "TESTCODE");
     end = high_resolution_clock::now();
-    setTime = duration_cast<milliseconds>(end - start).count();
+    setTime = duration_cast<microseconds>(end - start).count();
 
     cout << right << setw(9) << "Insert" << setw(10) << vectorTime << setw(10) << listTime << setw(10) << setTime << setw(10) << endl;
 
+    // DELETING
     start = high_resolution_clock::now();
     deleteMid(vector);
     end = high_resolution_clock::now();
-    vectorTime = duration_cast<milliseconds>(end - start).count();
+    vectorTime = duration_cast<microseconds>(end - start).count();
 
     start = high_resolution_clock::now();
     deleteMid(list);
     end = high_resolution_clock::now();
-    listTime = duration_cast<milliseconds>(end - start).count();
+    listTime = duration_cast<microseconds>(end - start).count();
 
     start = high_resolution_clock::now();
     deleteMid(set);
     end = high_resolution_clock::now();
-    setTime = duration_cast<milliseconds>(end - start).count();
+    setTime = duration_cast<microseconds>(end - start).count();
 
     cout << right << setw(9) << "Delete" << setw(10) << vectorTime << setw(10) << listTime << setw(10) << setTime << endl;
 
